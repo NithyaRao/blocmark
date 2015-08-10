@@ -64,6 +64,8 @@ RSpec.configure do |config|
   config.include Features::WaitHelpers
   config.include MailerHelpers
   config.include ActiveSupport::Testing::Assertions
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
 
   config.use_transactional_fixtures = false
 

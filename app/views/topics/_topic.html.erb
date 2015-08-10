@@ -1,0 +1,29 @@
+<div class="row">
+      <h3><%= link_to (markdown_to_html topic.title), [topic] %></h3>
+      <p>  <% topic.bookmarks.each do |bookmark| %>
+        
+      <div class="col-sm-6 col-md-4">
+      <ul class="nav nav-pills"> 
+       <li>  
+             <% if policy(bookmark).update? %>
+               <%= link_to edit_topic_bookmark_path(topic,bookmark), id: "bku-#{bookmark.to_param}" do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+               <%end %>
+            <% end %>
+       </li>
+       <li>   
+            <% if policy(bookmark).destroy? %>
+               <%= link_to  [topic,bookmark], method: :delete, id: "bkd-#{bookmark.to_param}" do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+               <%end %>
+            <% end %>
+        </li>
+        </ul>
+          <h4 class="media-heading">
+            <a id="bk<%=bookmark.id%>" class="embedly-card" href="<%=bookmark.url%>"></a>
+             </h4>
+         </div>
+       <% end %>
+  
+     </p>
+</div>

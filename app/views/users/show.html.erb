@@ -1,4 +1,13 @@
 <div class="container">
-<h1 class='list-title' id="header-centered"><%= markdown_to_html "#{@user.name || @user.email}'s Profile"%></h1>
+<h1 class='list-title' id="header-centered"><%= markdown_to_html "Blocmarks"%></h1>
   <br>
+    <%= render partial: 'topics/topic', collection: @topics %> 
+    <div class="col-md-8">
+    <% if policy(Topic.new).create? %>
+      <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
+    <% end %>
+     <% if policy(@topic).destroy? %>
+     <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %> 
+   <% end %> 
+   </div>
 </div> 

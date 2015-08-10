@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Blocitoff</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,15 +12,19 @@
       <% if current_user %>
            <li> <%= link_to  "My Blocmarks", root_path %> </li>
            <li> <%= link_to "About", about_path %> </li>
+           <li> <%= link_to "Topics", topics_path %> </li>
       <% end %>
       <div class="pull-right user-info">
            <% if current_user %>
-             <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-           <% else %>
-               <% unless current_page?(root_path) || current_page?(new_user_session_path)  %>
-             <%= link_to "Sign In", new_user_session_path %> or
-             <%= link_to "Sign Up", new_user_registration_path %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do %>
+                       <span class="sr-only">Sign out</span>
+                       <span class="glyphicon glyphicon-log-out"></span>
                <% end %>
+           <% else %>     
+                <% unless current_page?(root_path) || current_page?(new_user_session_path)  %>
+                        <%= link_to "Sign In", new_user_session_path %> or
+                        <%= link_to "Sign Up", new_user_registration_path %>
+                <% end %>
            <% end %>
          </div>
    </ul> 
@@ -42,5 +46,17 @@
          </div>
    <% end %>     
 <%= yield %>
+<script>
+  (function(w, d){
+   var id='embedly-platform', n = 'script';
+   if (!d.getElementById(id)){
+     w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+     var e = d.createElement(n); e.id = id; e.async=1;
+     e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+     var s = d.getElementsByTagName(n)[0];
+     s.parentNode.insertBefore(e, s);
+   }
+  })(window, document);
+</script>
 </body>
 </html>
