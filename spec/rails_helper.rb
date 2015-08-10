@@ -9,6 +9,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require "email_spec"
 require 'database_cleaner'
+require 'active_support/testing/assertions'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -62,6 +63,7 @@ RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature
   config.include Features::WaitHelpers
   config.include MailerHelpers
+  config.include ActiveSupport::Testing::Assertions
 
   config.use_transactional_fixtures = false
 
