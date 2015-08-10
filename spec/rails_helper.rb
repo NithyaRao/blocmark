@@ -61,6 +61,7 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
   config.include Features::SessionHelpers, type: :feature
   config.include Features::WaitHelpers
+  config.include MailerHelpers
 
   config.use_transactional_fixtures = false
 
