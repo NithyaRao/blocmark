@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "Topic Bookmark CRUD", type: :feature, js: true do
     let(:user) { create(:user) }
     let!(:topic) { create(:topic, user: user) }
-    let!(:bookmark) { create(:bookmark, topic: topic) }
-    let!(:bookmark_new) { build(:bookmark_new, topic: topic) }
+    let!(:bookmark) { create(:bookmark, topic: topic, user: user) }
+    let!(:bookmark_new) { build(:bookmark_new, topic: topic, user: user) }
 
 
     before { sign_in(user)  }
