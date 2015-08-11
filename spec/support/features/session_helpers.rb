@@ -20,7 +20,24 @@ module Features
       click_button "Sign in"  
       # STDIN.getc
     end
+   
+    def create_bookmarks(url, topic_id)
+      
+      visit new_topic_bookmark_path(topic_id)
+      fill_in 'bookmark_url', :with => url
+      click_button "Save bookmark"
+    end
 
+    def delete_bookmarks(bookmark_id)
+       debugger
+       click_link("bkd-#{bookmark_id}")
+    end
+
+    def update_bookmarks(bookmark_id, url)
+       click_link("bku-#{bookmark_id}")
+       fill_in 'bookmark_url', :with => url
+       click_button "Save bookmark"
+    end
    
 end
 

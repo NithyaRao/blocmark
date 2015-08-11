@@ -1,0 +1,23 @@
+<%= form_for [topic, bookmark] do |f| %>
+      <% if bookmark.errors.any? %>
+      <div class="alert alert-danger">
+       <h4>There are <%= pluralize(bookmark.errors.count, "error") %>.</h4>
+       <ul>
+         <% bookmark.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <div class="col-xs-8">
+   <%= form_group_tag(bookmark.errors[:url]) do %>
+     <p>
+     <%= f.label "Url:" %>
+     <%= f.text_field :url, class: 'form-control', placeholder: "Enter bookmark Url like www.rubygems.org" %>
+   </p>
+   <% end %>
+   <div class="form-group">
+     <%= f.submit "Save bookmark", class: 'btn btn-success' %>
+   </div>
+ </div>
+ <% end %>
