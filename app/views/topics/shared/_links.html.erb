@@ -14,6 +14,7 @@
                <%end %>
               <% end %> 
            </li>
+             <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
         </ul>   
         <h4 class="media-heading">
                <a id="bk<%=bookmark.id%>" class="embedly-card" href="//<%=bookmark.url%>"></a>    

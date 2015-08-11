@@ -7,7 +7,7 @@ class IncomingController < ApplicationController
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
     #debugger
-    puts "INCOMING PARAMS HERE: #{params}"
+    logger.debug "INCOMING PARAMS HERE: #{params}"
 
     # Find the user by using params[:sender]
      sender_email = params[:sender]
