@@ -29,8 +29,7 @@ module Features
     end
 
     def delete_bookmarks(bookmark_id)
-       debugger
-       click_link("bkd-#{bookmark_id}")
+        click_link("bkd-#{bookmark_id}")
     end
 
     def update_bookmarks(bookmark_id, url)

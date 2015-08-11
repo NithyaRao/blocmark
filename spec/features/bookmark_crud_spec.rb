@@ -50,7 +50,6 @@ describe "Topic Bookmark CRUD", type: :feature, js: true do
          wait 1 do
            expect( current_path ).to eq user_path( User.last) 
          end  
-         save_and_open_page
          delete_bookmarks(bookmark.to_param)
          wait 1 do 
            expect(topic.bookmarks.count).to eq(0) 
