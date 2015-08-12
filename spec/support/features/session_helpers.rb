@@ -29,7 +29,7 @@ module Features
     end
 
     def delete_bookmarks(bookmark_id)
-       debugger
+       #debugger
        click_link("bkd-#{bookmark_id}")
     end
 

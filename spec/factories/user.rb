@@ -9,7 +9,7 @@ FactoryGirl.define do
 
     factory :new_user, :class => 'User'  do
      name "Adam Smith"
-     sequence(:email, 100) { |n| "person#{n}@example.com" }
+     sequence(:email, 100) { |n| "personnew#{n}@example.com" }
      password "helloworld"
      password_confirmation "helloworld"
    end
