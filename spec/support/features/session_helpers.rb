@@ -39,6 +39,15 @@ module Features
        click_button "Save bookmark"
     end
    
+    def like_bookmarks(bookmark_id)
+       #debugger
+       click_link("lk-#{bookmark_id}")
+    end
+
+    def unlike_bookmarks(bookmark_id)
+       #debugger
+       click_link("unlk-#{bookmark_id}")
+    end
 end
 
 module WaitHelpers
