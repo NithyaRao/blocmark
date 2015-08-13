@@ -9,10 +9,10 @@ describe "User Sign In and Sign out ", js: true do
           sign_in(user)
         #  save_and_open_page
      end 
-     it "sucessful,redirects to the User Profile page" do  
+     it "sucessful,redirects to the Topics page" do  
     # STDIN.getc   
       wait 1 do
-      expect(current_path).to eq user_path(User.last)   
+      expect(current_path).to eq topics_path   
       end  
      end
 
@@ -20,7 +20,7 @@ describe "User Sign In and Sign out ", js: true do
      # STDIN.getc
      # save_and_open_page
       wait 1 do 
-      expect(current_path).to eq user_path(User.last)
+      expect(current_path).to eq topics_path
       end
       expect(page).not_to have_content( "Sign In or Sign Up")
       expect(page).to have_content( "Sign out")

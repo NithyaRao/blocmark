@@ -65,4 +65,5 @@ group :test do
   gem 'selenium-webdriver'
   gem "chromedriver-helper"
   gem 'database_cleaner', '~> 1.4.1'
+  gem 'action_mailer_cache_delivery', '~> 0.3.7'
 end  

@@ -9,7 +9,7 @@
          <% end %>
      </p>         
 <% else %>
-      <h3><%= link_to (markdown_to_html topic.title), [topic] %></h3>
+      <h3><%= link_to (markdown_to_html topic.title), [topic], id: "top-#{topic.to_param}" %></h3>
       <p>  <% topic.bookmarks.each do |bookmark| %>
               <%= render partial: 'topics/shared/links', locals: { topic: topic, bookmark: bookmark } %>
              <% end %>

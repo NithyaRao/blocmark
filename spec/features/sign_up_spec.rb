@@ -9,9 +9,11 @@ describe "user_signup", js: true do
 
     it "Do you receive a confirmation email?" do
       sign_up(user.name, user.email, user.password)
-      expect(page).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
       wait 1 do
-      expect(unread_emails_for(user.email).count).to eq(1)
+      expect(page).to have_content('A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.')
+      end
+      wait 1 do
+       expect(unread_emails_for(user.email).count).to eq(1)
       end
       open_email(user.email)
       expect(current_email).to have_body_text('You can confirm your account email through the link below')

@@ -48,6 +48,12 @@ module Features
        #debugger
        click_link("unlk-#{bookmark_id}")
     end
+
+    def display_topic(topic_id)
+      
+      #visit topics
+      click_link("top-#{topic_id}")
+    end
 end
 
 module WaitHelpers
