@@ -54,6 +54,11 @@ module Features
       #visit topics
       click_link("top-#{topic_id}")
     end
+
+    def display_user_profile
+       click_link("My Blocmarks")
+      # save_and_open_page
+    end
 end
 
 module WaitHelpers

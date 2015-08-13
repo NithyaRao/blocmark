@@ -15,7 +15,7 @@ describe "Bookmarks displayed for each Topic", type: :feature, js: true do
         end
        # save_and_open_page
        # debugger
-         expect(page).to have_link("top-#{bookmark.to_param}")
+         expect(page).to have_link("top-#{topic.to_param}")
          expect(page).to have_css('div.embedly-card', count: 2)
          expect(page).to have_selector('iframe', count: 2)
 
@@ -26,13 +26,13 @@ describe "Bookmarks displayed for each Topic", type: :feature, js: true do
         topic_other = create(:topic, user: user )
         bookmark_other = create(:bookmark, topic: topic_other)
         display_topic(topic.to_param)
-        wait 1 do 
+        wait 1 do
           expect( current_path ).to eq topic_path(topic.to_param)
         end
         expect(page).to have_css('div.embedly-card', count: 2)
         expect(page).to have_selector('iframe', count: 2)
-        expect(page).to have_link("top-#{bookmark.to_param}")
-        expect(page).not_to have_link("top-#{bookmark_other.to_param}")   
+        expect(page).to have_link("top-#{topic.to_param}")
+        expect(page).not_to have_link("top-#{topic_other.to_param}")   
     end 
   end 
 

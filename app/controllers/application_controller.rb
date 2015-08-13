@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
    def configure_permitted_parameters
      devise_parameter_sanitizer.for(:sign_up) << :name
    end
+
+   # Added this to prevent browser caching as the back button didnot refesh the page .
+ #  before_filter :set_cache_buster
+
+ # def set_cache_buster
+  #  response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+  #  response.headers["Pragma"] = "no-cache"
+  #  response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+#  end
 end

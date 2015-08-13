@@ -9,5 +9,7 @@
       <% end %>
   </li>
 </ul>
-<%= render partial: 'topics/topic', collection: @topics, as: :topic %>    
+  <% @topics.each do |topic| %>
+   <%= render partial: 'topics/topic', locals: { topic: topic, bookmarks: topic.bookmarks } %>
+  <% end %>   
 </div>

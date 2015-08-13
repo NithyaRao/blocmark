@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   def show
      #debugger
      @user = current_user
-     @topic = Topic.find(params[:id])
+     @topic = Topic.find(params[:topic_id])
      @bookmarks = @topic.bookmarks
      @bookmark = Bookmark.new
      authorize @bookmark

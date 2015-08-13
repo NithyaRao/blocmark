@@ -1,18 +1,7 @@
 <div class="row">
-    <% if current_page?(myblocmarks_path) %>   
-    <h3><%= (markdown_to_html topic.title) %></h3>
- 
-       <p>  <% topic.bookmarks.each do |bookmark| %>
-           <% if policy(bookmark).update? %>
-              <%= render partial: 'topics/shared/links', locals: { topic: topic, bookmark: bookmark } %>
-              <% end %>
-         <% end %>
-     </p>         
-<% else %>
-      <h3><%= link_to (markdown_to_html topic.title), [topic], id: "top-#{topic.to_param}" %></h3>
-      <p>  <% topic.bookmarks.each do |bookmark| %>
+      <h3><%= link_to (markdown_to_html topic.title), [topic], class: "link", id: "top-#{topic.to_param}" %></h3>
+      <p>  <% bookmarks.each do |bookmark| %>
               <%= render partial: 'topics/shared/links', locals: { topic: topic, bookmark: bookmark } %>
              <% end %>
-      </p>
-<% end %>         
+      </p>        
 </div>

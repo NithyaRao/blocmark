@@ -13,5 +13,5 @@
            <% end %>
       </li>  
      </ul>   
-<%= render partial: 'topics/topic', object: @topic, as: :topic %> 
+<%= render partial: 'topics/topic', locals: { topic: @topic, bookmarks: @topic.bookmarks } %> 
 </div>   

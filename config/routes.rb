@@ -10,7 +10,7 @@ Rails.application.routes.draw do
    
   get 'welcome/index'
   get 'about' =>'welcome#about'
-  get 'myblocmarks' => 'topics#index'
+  get 'myblocmarks' => 'users#show'
   post :incoming, to: 'incoming#create'
   root to: 'welcome#index'
 end
