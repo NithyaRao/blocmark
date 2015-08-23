@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :bookmarks, dependent: :destroy   
   has_many :likes, dependent: :destroy
  
+  extend FriendlyId
+  friendly_id  :name  
 
   def liked(bookmark)
      likes.where(bookmark_id: bookmark.id).first

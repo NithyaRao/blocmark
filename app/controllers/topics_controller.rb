@@ -5,11 +5,14 @@ class TopicsController < ApplicationController
   end
 
   def show
-     @topic = Topic.find(params[:id])
+     @topic = Topic.friendly.find(params[:id])
      @bookmarks = @topic.bookmarks
      @bookmark = Bookmark.new
      authorize @topic
-   end
+     if request.path != topic_path(@topic)
+       redirect_to @topic, status: :moved_permanently
+     end 
+  end
 
   def new
      @topic = Topic.new
@@ -18,7 +21,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-     @topic = Topic.find(params[:id])
+     @topic = Topic.friendly.find(params[:id])
      authorize @topic
   end
 
@@ -36,7 +39,7 @@ class TopicsController < ApplicationController
    end
  
    def update
-     @topic = Topic.find(params[:id])
+     @topic = Topic.friendly.find(params[:id])
      authorize @topic
      if @topic.update_attributes(topic_params)
        redirect_to @topic
@@ -47,7 +50,7 @@ class TopicsController < ApplicationController
    end
 
    def destroy
-     @topic = Topic.find(params[:id])
+     @topic = Topic.friendly.find(params[:id])
      authorize @topic
      if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
