@@ -1,6 +1,0 @@
-<h1 class='list-title' id="header-centered">My Blocmarks </h1>
-<div class="container">
-  <% @all_bookmarks.group_by(&:topic).each do | topic, bookmarks | %>
-    <%= render partial: 'topics/topic', locals: { topic: topic, bookmarks: bookmarks } %>
-  <% end %>
-</div>

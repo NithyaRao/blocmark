@@ -1,0 +1,15 @@
+= form_for [topic, bookmark] do |f|
+  - if bookmark.errors.any?
+    .alert.alert-danger
+      %h4
+        There are #{pluralize(bookmark.errors.count, "error")}.
+      %ul
+        - bookmark.errors.full_messages.each do |msg|
+          %li= msg
+  .col-xs-8
+    = form_group_tag(bookmark.errors[:url]) do
+      %p
+        = f.label "Url:"
+        = f.text_field :url, class: 'form-control', placeholder: "Enter bookmark Url like www.rubygems.org"
+    .form-group
+      = f.submit "Save bookmark", class: 'btn btn-success'

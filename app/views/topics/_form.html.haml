@@ -1,0 +1,15 @@
+= form_for [topic] do |f|
+  - if topic.errors.any?
+    .alert.alert-danger
+      %h4
+        There are #{pluralize(topic.errors.count, "error")}.
+      %ul
+        - topic.errors.full_messages.each do |msg|
+          %li= msg
+  .col-xs-8
+    = form_group_tag(topic.errors[:title]) do
+      %p
+        = f.label "Topic: "
+        = f.text_field :title, class: 'form-control', placeholder: "Enter topic title"
+    .form-group
+      = f.submit "Save Topic", class: 'btn btn-success'

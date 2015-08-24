@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Blocitoff
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .container
+      %ul.nav.nav-tabs
+        - if current_user
+          %li
+            = link_to  "My Blocmarks", myblocmarks_path
+          %li
+            = link_to "About", about_path
+          %li
+            = link_to "Topics", topics_path
+        .pull-right.user-info
+          - if current_user
+            = link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm' do
+              %span.sr-only Sign out
+              %span.glyphicon.glyphicon-log-out
+          - else
+            - unless current_page?(root_path) || current_page?(new_user_session_path)
+              = link_to "Sign In", new_user_session_path
+              or
+              \#{link_to "Sign Up", new_user_registration_path}
+    - if flash.now[:notice]
+      .alert.alert-success
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        = flash.now[:notice]
+    - elsif flash.now[:error]
+      .alert.alert-danger
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        = flash.now[:error]
+    - elsif flash.now[:alert]
+      .alert.alert-warning
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        = flash.now[:alert]
+    = yield
+    :javascript
+      (function(w, d){
+       var id='embedly-platform', n = 'script';
+       if (!d.getElementById(id)){
+         w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+         var e = d.createElement(n); e.id = id; e.async=1;
+         e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+         var s = d.getElementsByTagName(n)[0];
+         s.parentNode.insertBefore(e, s);
+       }
+      })(window, document);

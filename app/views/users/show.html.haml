@@ -1,0 +1,4 @@
+%h1#header-centered.list-title My Blocmarks
+.container
+  - @all_bookmarks.group_by(&:topic).each do | topic, bookmarks |
+    = render partial: 'topics/topic', locals: { topic: topic, bookmarks: bookmarks }

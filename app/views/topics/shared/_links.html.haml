@@ -1,0 +1,13 @@
+.col-sm-6.col-md-4
+  %ul.nav.nav-pills
+    %li
+      - if policy(bookmark).update?
+        = link_to edit_topic_bookmark_path(topic,bookmark), id: "bku-#{bookmark.to_param}" do
+          %span.glyphicon.glyphicon-pencil
+    %li
+      - if policy(bookmark).destroy?
+        = link_to  [topic,bookmark], method: :delete, id: "bkd-#{bookmark.to_param}" do
+          %span.glyphicon.glyphicon-trash
+    = render partial: 'likes/like', locals: { bookmark: bookmark }
+  %h4.media-heading
+    %a.embedly-card{:href => "//#{bookmark.url}", :id => "bk#{bookmark.id}"}
